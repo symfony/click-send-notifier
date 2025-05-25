@@ -87,7 +87,7 @@ final class ClickSendTransport extends AbstractTransport
 
         $response = $this->client->request('POST', $endpoint, [
             'auth_basic' => [$this->apiUsername, $this->apiKey],
-            'json' => array_filter($options),
+            'json' => ['messages' => [array_filter($options)]],
         ]);
 
         try {
