@@ -60,7 +60,7 @@ final class ClickSendTransportTest extends TransportTestCase
         $response = $this->createMock(ResponseInterface::class);
         $response->expects(self::exactly(2))->method('getStatusCode')->willReturn(200);
         $response->expects(self::once())->method('getContent')->willReturn('');
-        $client = new MockHttpClient(function (string $method, string $url, array $options) use ($response): ResponseInterface {
+        $client = new MockHttpClient(static function (string $method, string $url, array $options) use ($response): ResponseInterface {
             self::assertSame('POST', $method);
             self::assertSame('https://rest.clicksend.com/v3/sms/send', $url);
 
@@ -84,7 +84,7 @@ final class ClickSendTransportTest extends TransportTestCase
         $response = $this->createMock(ResponseInterface::class);
         $response->expects(self::exactly(2))->method('getStatusCode')->willReturn(200);
         $response->expects(self::once())->method('getContent')->willReturn('');
-        $client = new MockHttpClient(function (string $method, string $url, array $options) use ($response): ResponseInterface {
+        $client = new MockHttpClient(static function (string $method, string $url, array $options) use ($response): ResponseInterface {
             self::assertSame('POST', $method);
             self::assertSame('https://rest.clicksend.com/v3/sms/send', $url);
 
